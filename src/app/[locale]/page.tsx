@@ -1,36 +1,89 @@
-"use client";
-import React from "react";
+import { Box, Container, Grid } from "@mui/material";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
 
-import Image from "next/image";
-
-import { Box, Grid, Stack } from "@mui/material";
-
-import HeroBanner from "src/widgets/Herobanner";
+import DashBoardWidget from "src/widgets/DashBoardWidget";
+import SellStatistics from "src/widgets/SellStatistics";
+import VisitorStatistic from "src/widgets/VisitorStatistic";
+import UserStatistic from "src/widgets/UserStatistic";
+import UserSellStatistic from "src/widgets/UserSellStatiStics";
+import {
+  genderValue,
+  monthSellData,
+  userStatisticData,
+  userWeeklyData,
+  visitorData,
+  weekSellData,
+  yearSellData,
+} from "src/global/StatisticData";
 
 const App = () => {
   return (
-    <Grid container height="100%" px={4}>
-      <Grid item lg={6} xs={10} sx={{ marginX: { xs: "auto" } }}>
-        <HeroBanner />
-      </Grid>
-      <Grid item lg={6} sx={{ display: { xs: "none", lg: "inline" } }}>
-        <Stack height="100%" justifyContent="center" alignItems="center">
-          <Box
-            p={3}
-            sx={(theme) => ({
-              border: `10px solid ${theme.palette.primary.light}`,
-            })}
+    <Box pt={1}>
+      <Container maxWidth="xl">
+        <Grid container columnSpacing={7} rowSpacing={4}>
+          <Grid
+            item
+            container
+            md={8}
+            xs={12}
+            columnSpacing={7}
+            rowSpacing={2.5}
           >
-            <Image
-              src="https://scontent.fdac151-1.fna.fbcdn.net/v/t1.6435-9/57183841_350708698896126_7610830156164235264_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_eui2=AeFaElRGqUVej9W3pHRzUJYzekZmaJR7xdZ6RmZolHvF1s_RFSaCIhmJ_z_gS4uUbj4a_8ibG42oZlFVJ_U8AMvQ&_nc_ohc=AayQ2jksRZYAX8DVEQE&_nc_ht=scontent.fdac151-1.fna&oh=00_AfAnLLsyMymVy8SGuIlMpzpiAJ2xQgEygxce96inEEcTgQ&oe=6537C73C"
-              alt="me"
-              height={430}
-              width={370}
-            ></Image>
-          </Box>
-        </Stack>
-      </Grid>
-    </Grid>
+            <Grid item xs={12} md={6}>
+              <DashBoardWidget
+                icon={BusinessCenterIcon}
+                totalItem="Total Product"
+                totalValue={932}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <DashBoardWidget
+                icon={InsertDriveFileIcon}
+                totalItem="Total Order"
+                totalValue={654}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <DashBoardWidget
+                icon={MonetizationOnIcon}
+                totalItem="Total Sell"
+                totalValue={854}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <DashBoardWidget
+                icon={CurrencyBitcoinIcon}
+                totalItem="Total Customer"
+                totalValue={754}
+              />
+            </Grid>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <VisitorStatistic visitorData={visitorData} />
+          </Grid>
+          <Grid item xs={12}>
+            <SellStatistics
+              weekSellData={weekSellData}
+              monthSellData={monthSellData}
+              yearSellData={yearSellData}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={3}>
+            <UserStatistic genderValue={genderValue} />
+          </Grid>
+          <Grid item md={9} xs={12}>
+            <UserSellStatistic
+              userStatisticData={userStatisticData}
+              userWeeklyData={userWeeklyData}
+            />
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
