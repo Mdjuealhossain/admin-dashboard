@@ -21,7 +21,7 @@ import {
 
 const App = () => {
   return (
-    <Box pt={1}>
+    <Box py={9}>
       <Container maxWidth="xl">
         <Grid container columnSpacing={7} rowSpacing={4}>
           <Grid

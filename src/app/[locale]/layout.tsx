@@ -2,6 +2,7 @@ import { useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import ThemeContextProvider from "src/theme";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import Applayout from "../Layout/Applayout";
 
 export const metadata = {
   title: "Versh OpenAI Teamplate",
@@ -27,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <ThemeContextProvider>
-        <body suppressHydrationWarning={true}>{children}</body>
+        <body suppressHydrationWarning={true}>
+          <Applayout>{children}</Applayout>
+        </body>
       </ThemeContextProvider>
     </html>
   );
